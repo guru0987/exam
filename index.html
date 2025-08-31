@@ -1,132 +1,307 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>10 Text Boxes Form</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>OS Lab Commands</title>
   <style>
-    :root{ --bg:#f7f8fb; --card:#ffffff; --accent:#4f46e5; --muted:#6b7280; }
-    body{ font-family:Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; background:var(--bg); margin:0; padding:32px; }
-    .container{ max-width:900px; margin:0 auto; }
-    .card{ background:var(--card); border-radius:12px; box-shadow:0 6px 18px rgba(16,24,40,0.06); padding:24px; }
-    h1{ margin:0 0 12px 0; font-size:20px; }
-    p.lead{ margin:0 0 18px 0; color:var(--muted); }
-    form.grid{ display:grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap:14px; }
-    label{ display:block; font-size:13px; color:#111827; margin-bottom:6px; }
-    input[type="text"]{ width:100%; padding:10px 12px; border-radius:8px; border:1px solid #e6e8ef; font-size:14px; box-sizing:border-box; }
-    .full{ grid-column:1/-1; }
-    .actions{ display:flex; gap:10px; justify-content:flex-end; margin-top:16px; }
-    button{ padding:10px 14px; border-radius:8px; border:0; font-weight:600; cursor:pointer; }
-    .btn-primary{ background:var(--accent); color:white; }
-    .btn-ghost{ background:transparent; border:1px solid #e6e8ef; color:#111827; }
-    @media (max-width:640px){ form.grid{ grid-template-columns:1fr; } }
-    .result{ margin-top:16px; padding:12px; border-radius:8px; background:#f3f4f6; font-family:monospace; white-space:pre-wrap; }
+    body {
+      font-family: Arial, sans-serif;
+      background: #f5f5f5;
+      margin: 0;
+      padding: 20px;
+      color: #222;
+    }
+    .container {
+      max-width: 1000px;
+      margin: auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+    }
+    .card {
+      background: #fff;
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    .card h2 {
+      margin-top: 0;
+      font-size: 18px;
+      color: #333;
+    }
+    .card p {
+      margin: 6px 0;
+      font-size: 14px;
+      color: #555;
+    }
+    .cmd {
+      font-family: monospace;
+      background: #eee;
+      padding: 8px 10px;
+      border-radius: 6px;
+      display: inline-block;
+      margin-top: 10px;
+    }
   </style>
 </head>
 <body>
+  <h1>OS Lab – 8 Example Commands</h1>
   <div class="container">
+
     <div class="card">
-      <h1>Enter text in 10 boxes</h1>
-      <p class="lead">Fill in the fields below. Click <strong>Show</strong> to display the entered values.</p>
-
-      <form id="myForm" class="grid" onsubmit="return false;">
-        <div>
-          <label for="box1">Box 1</label>
-          <input type="text" id="box1" name="box1" placeholder="Enter text for box 1" />
-        </div>
-        <div>
-          <label for="box2">Box 2</label>
-          <input type="text" id="box2" name="box2" placeholder="Enter text for box 2" />
-        </div>
-        <div>
-          <label for="box3">Box 3</label>
-          <input type="text" id="box3" name="box3" placeholder="
-              fork():
-              #include <stdio.h>
-#include <unistd.h>
-#include <sys/types.h>
-
-int main() {
+      <h2>Example – List files</h2>
+      <p> 1. fork()
+ #include <stdio.h>
+ #include <unistd.h>
+ #include <sys/types.h>
+ int main() {
     pid_t pid;
-
     printf("Before fork: This is the original process.\n");
-
     pid = fork();
-
     if (pid < 0) {
-        // fork failed
         fprintf(stderr, "Fork failed\n");
         return 1;
-    } 
-    else if (pid == 0) {
-        // child process
-        printf("Child process: My PID is %d, My parent's PID is %d\n",
-               getpid(), getppid());
-    } 
-    else {
-        // parent process
-        printf("Parent process: My PID is %d, My child's PID is %d\n",
-               getpid(), pid);
+    } else if (pid == 0) {
+        printf("Child process: My PID is %d, My parent's PID is %d\n", getpid(), getppid());
+    } else {
+        printf("Parent process: My PID is %d, My child's PID is %d\n", getpid(), pid);
     }
-
     printf("After fork: This message is printed by both processes.\n");
-
     return 0;
-}
-" />
-        </div>
-        <div>
-          <label for="box4">Box 4</label>
-          <input type="text" id="box4" name="box4" placeholder="Enter text for box 4" />
-        </div>
-        <div>
-          <label for="box5">Box 5</label>
-          <input type="text" id="box5" name="box5" placeholder="Enter text for box 5" />
-        </div>
-        <div>
-          <label for="box6">Box 6</label>
-          <input type="text" id="box6" name="box6" placeholder="Enter text for box 6" />
-        </div>
-        <div>
-          <label for="box7">Box 7</label>
-          <input type="text" id="box7" name="box7" placeholder="Enter text for box 7" />
-        </div>
-        <div>
-          <label for="box8">Box 8</label>
-          <input type="text" id="box8" name="box8" placeholder="Enter text for box 8" />
-        </div>
-        <div>
-          <label for="box9">Box 9</label>
-          <input type="text" id="box9" name="box9" placeholder="Enter text for box 9" />
-        </div>
-        <div>
-          <label for="box10">Box 10</label>
-          <input type="text" id="box10" name="box10" placeholder="Enter text for box 10" />
-        </div>
-
-        <div class="full actions">
-          <button type="button" class="btn-ghost" onclick="document.getElementById('myForm').reset();">Clear</button>
-          <button type="button" class="btn-primary" onclick="showValues()">Show</button>
-        </div>
-      </form>
-
-      <div id="output" class="result" aria-live="polite" hidden></div>
-    </div>
-  </div>
-
-  <script>
-    function showValues(){
-      const values = [];
-      for(let i=1;i<=10;i++){
-        const v = document.getElementById('box'+i).value || '';
-        values.push('Box '+i+': '+v);
-      }
-      const out = document.getElementById('output');
-      out.hidden = false;
-      out.textContent = values.join('\n');
-      // also log to console
-      console.log(values);
+ }
+ 2. creat()
+ #include <fcntl.h>
+ #include <unistd.h>
+ #include <stdio.h>
+ int main() {
+    const char *filename = "LIONEL.txt";
+    mode_t permissions = 0644;
+    int fd = creat(filename, permissions);
+    if (fd == -1) {
+        perror("Error creating file");
+        return 1;
+    } else {
+        printf("File '%s' created successfully with file descriptor %d\n", filename, fd);
+        if (close(fd) == -1) {
+            perror("Error closing file");
+            return 1;
+        }
+        printf("File created successfully.\n");
     }
-  </script>
+    return 0;
+ }
+ 3. read()
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include <unistd.h>
+ #include <fcntl.h>
+ int main() {
+    int fd;
+    char buffer[1024];
+    ssize_t bytes_read;
+    const char *filename = "LIONEL.txt";
+    fd = open(filename, O_CREAT | O_WRONLY | O_TRUNC, 0644);
+    if (fd == -1) {
+        perror("Error creating file");
+        return 1;
+    }
+    write(fd, "Hello, read system call example!", 32);
+    close(fd);
+    fd = open(filename, O_RDONLY);
+    if (fd == -1) {
+        perror("Error opening file");
+        return 1;
+    }
+    bytes_read = read(fd, buffer, sizeof(buffer) - 1);
+    if (bytes_read == -1) {
+        perror("Error reading file");
+        close(fd);
+        return 1;
+    }
+    buffer[bytes_read] = '\0';
+    printf("Read %zd bytes: %s\n", bytes_read, buffer);
+    if (close(fd) == -1) {
+        perror("Error closing file");
+        return 1;
+    }
+    return 0;
+ }
+ 4. write()
+ #include <unistd.h>
+ #include <fcntl.h>
+ #include <stdio.h>
+ int main() {
+    int fd;
+    const char *message = "Hello, System Calls!\n";
+    ssize_t bytes_written;
+    fd = open("output.txt", O_CREAT | O_WRONLY, 0644);
+    if (fd == -1) {
+        perror("Error opening file");
+        return 1;
+    }
+    bytes_written = write(fd, message, 21);
+    if (bytes_written == -1) {
+        perror("Error writing to file");
+        close(fd);
+        return 1;
+    } else if (bytes_written < 21) {
+        fprintf(stderr, "Warning: Not all bytes were written.\n");
+    }
+    if (close(fd) == -1) {
+        perror("Error closing file");
+        return 1;
+    }
+    printf("Message successfully written to output.txt\n");
+    return 0;
+ }
+ 5. open()
+ #include <fcntl.h>
+ #include <stdio.h>
+ #include <unistd.h>
+ int main() {
+    const char* filename = "LIONEL.txt";
+    int fd;
+    fd = open(filename, O_RDONLY);
+    if (fd == -1) {
+        perror("Error opening file for reading");
+        return 1;
+    }
+    printf("File '%s' opened successfully with file descriptor %d\n", filename, fd);
+    if (close(fd) == -1) {
+        perror("Error closing file");
+        return 1;
+    }
+    fd = open("adhi.txt", O_WRONLY | O_CREAT | O_TRUNC, 0644);
+    if (fd == -1) {
+        perror("Error creating/opening adhi.txt for writing");
+        return 1;
+    }
+    close(fd);
+    return 0;
+ }
+ 6. exec()
+ #include <stdio.h>
+ #include <unistd.h>
+ #include <stdlib.h>
+ int main() {
+    char *args[] = {"ls", "-l", NULL};
+    printf("Executing 'ls -l' using execvp...\n");
+    execvp("ls", args);
+    perror("execvp failed");
+    return EXIT_FAILURE;
+ }
+ 7. wait()
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include <unistd.h>
+ #include <sys/wait.h>
+ int main() {
+    pid_t pid;
+    printf("Parent process (PID: %d) is starting.\n", getpid());
+    pid = fork();
+    if (pid < 0) {
+        perror("fork failed");
+        exit(EXIT_FAILURE);
+    } else if (pid == 0) {
+        printf("Child process (PID: %d) created, parent PID: %d.\n", getpid(), getppid());
+        sleep(2);
+        printf("Child process (PID: %d) is exiting.\n", getpid());
+        exit(EXIT_SUCCESS);
+    } else {
+        int status;
+        printf("Parent process (PID: %d) is waiting for child (PID: %d).\n", getpid(), pid);
+        wait(&status);
+        printf("Parent process detected child (PID: %d) terminated.\n", pid);
+        if (WIFEXITED(status)) {
+            printf("Child exited with status: %d\n", WEXITSTATUS(status));
+        } else {
+            printf("Child terminated abnormally.\n");
+        }
+        printf("Parent process (PID: %d) is exiting.\n", getpid());
+    }
+    return 0;
+ }
+ 8. exit()
+ #include <stdlib.h>
+ #include <stdio.h>
+ int main() {
+    printf("program exited\n");
+    exit(0);
+    // This line will never be reached
+    return 0;
+ }
+ 9. close()
+ #include <stdio.h>
+ #include <fcntl.h>
+ #include <unistd.h>
+ int main() {
+    int fd = open("sample.txt", O_CREAT | O_WRONLY, 0644);
+    if (fd == -1) {
+        perror("Error opening file");
+        return 1;
+    }
+    printf("File opened with descriptor %d\n", fd);
+    if (close(fd) == -1) {
+        perror("Error closing file");
+        return 1;
+    }
+    printf("File closed successfully.\n");
+    return 0;
+ }
+ 10. getpid()
+ #include <stdio.h>
+ #include <unistd.h>
+ int main() {
+    printf("The process ID is: %d\n", getpid());
+    printf("The parent process ID is: %d\n", getppid());
+    return 0;
+ </p>
+      <div class="cmd">ls -l</div>
+    </div>
+
+    <div class="card">
+      <h2>Example – Print working directory</h2>
+      <p>Purpose: Show current location</p>
+      <div class="cmd">pwd</div>
+    </div>
+
+    <div class="card">
+      <h2>Example – Create directory</h2>
+      <p>Purpose: Make a new folder</p>
+      <div class="cmd">mkdir myfolder</div>
+    </div>
+
+    <div class="card">
+      <h2>Example – Copy file</h2>
+      <p>Purpose: Duplicate a file</p>
+      <div class="cmd">cp file1.txt file2.txt</div>
+    </div>
+
+    <div class="card">
+      <h2>Example – Move file</h2>
+      <p>Purpose: Rename or move file</p>
+      <div class="cmd">mv file1.txt newfolder/</div>
+    </div>
+
+    <div class="card">
+      <h2>Example – Remove file</h2>
+      <p>Purpose: Delete a file</p>
+      <div class="cmd">rm file1.txt</div>
+    </div>
+
+    <div class="card">
+      <h2>Example – Check processes</h2>
+      <p>Purpose: Show running tasks</p>
+      <div class="cmd">ps aux</div>
+    </div>
+
+    <div class="card">
+      <h2>Example – Show disk usage</h2>
+      <p>Purpose: Display free space</p>
+      <div class="cmd">df -h</div>
+    </div>
+
+  </div>
 </body>
 </html>
