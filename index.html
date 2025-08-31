@@ -1,11 +1,23 @@
-<html>
-  <body>
-    <p>
-     1. fork()
- #include <stdio.h>
- #include <unistd.h>
- #include <sys/types.h>
- int main() {
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>OS Lab Programs</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; background: #f9f9f9; }
+    h2 { color: #2c3e50; margin-top: 30px; }
+    pre { background: #272822; color: #f8f8f2; padding: 15px; border-radius: 8px; overflow-x: auto; }
+    code { font-family: Consolas, monospace; }
+  </style>
+</head>
+<body>
+  <h1>OS Lab Programs</h1>
+
+  <h2>1. fork()</h2>
+  <pre><code>#include <stdio.h>
+#include <unistd.h>
+#include <sys/types.h>
+int main() {
     pid_t pid;
     printf("Before fork: This is the original process.\n");
     pid = fork();
@@ -19,12 +31,14 @@
     }
     printf("After fork: This message is printed by both processes.\n");
     return 0;
- }
- 2. creat()
- #include <fcntl.h>
- #include <unistd.h>
- #include <stdio.h>
- int main() {
+}
+  </code></pre>
+
+  <h2>2. creat()</h2>
+  <pre><code>#include <fcntl.h>
+#include <unistd.h>
+#include <stdio.h>
+int main() {
     const char *filename = "LIONEL.txt";
     mode_t permissions = 0644;
     int fd = creat(filename, permissions);
@@ -40,13 +54,15 @@
         printf("File created successfully.\n");
     }
     return 0;
- }
- 3. read()
- #include <stdio.h>
- #include <stdlib.h>
- #include <unistd.h>
- #include <fcntl.h>
- int main() {
+}
+  </code></pre>
+
+  <h2>3. read()</h2>
+  <pre><code>#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
+#include <fcntl.h>
+int main() {
     int fd;
     char buffer[1024];
     ssize_t bytes_read;
@@ -76,12 +92,14 @@
         return 1;
     }
     return 0;
- }
- 4. write()
- #include <unistd.h>
- #include <fcntl.h>
- #include <stdio.h>
- int main() {
+}
+  </code></pre>
+
+  <h2>4. write()</h2>
+  <pre><code>#include <unistd.h>
+#include <fcntl.h>
+#include <stdio.h>
+int main() {
     int fd;
     const char *message = "Hello, System Calls!\n";
     ssize_t bytes_written;
@@ -104,12 +122,14 @@
     }
     printf("Message successfully written to output.txt\n");
     return 0;
- }
- 5. open()
- #include <fcntl.h>
- #include <stdio.h>
- #include <unistd.h>
- int main() {
+}
+  </code></pre>
+
+  <h2>5. open()</h2>
+  <pre><code>#include <fcntl.h>
+#include <stdio.h>
+#include <unistd.h>
+int main() {
     const char* filename = "LIONEL.txt";
     int fd;
     fd = open(filename, O_RDONLY);
@@ -129,24 +149,28 @@
     }
     close(fd);
     return 0;
- }
- 6. exec()
- #include <stdio.h>
- #include <unistd.h>
- #include <stdlib.h>
- int main() {
+}
+  </code></pre>
+
+  <h2>6. exec()</h2>
+  <pre><code>#include <stdio.h>
+#include <unistd.h>
+#include <stdlib.h>
+int main() {
     char *args[] = {"ls", "-l", NULL};
     printf("Executing 'ls -l' using execvp...\n");
     execvp("ls", args);
     perror("execvp failed");
     return EXIT_FAILURE;
- }
- 7. wait()
- #include <stdio.h>
- #include <stdlib.h>
- #include <unistd.h>
- #include <sys/wait.h>
- int main() {
+}
+  </code></pre>
+
+  <h2>7. wait()</h2>
+  <pre><code>#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
+#include <sys/wait.h>
+int main() {
     pid_t pid;
     printf("Parent process (PID: %d) is starting.\n", getpid());
     pid = fork();
@@ -171,21 +195,25 @@
         printf("Parent process (PID: %d) is exiting.\n", getpid());
     }
     return 0;
- }
- 8. exit()
- #include <stdlib.h>
- #include <stdio.h>
- int main() {
+}
+  </code></pre>
+
+  <h2>8. exit()</h2>
+  <pre><code>#include <stdlib.h>
+#include <stdio.h>
+int main() {
     printf("program exited\n");
     exit(0);
     // This line will never be reached
     return 0;
- }
- 9. close()
- #include <stdio.h>
- #include <fcntl.h>
- #include <unistd.h>
- int main() {
+}
+  </code></pre>
+
+  <h2>9. close()</h2>
+  <pre><code>#include <stdio.h>
+#include <fcntl.h>
+#include <unistd.h>
+int main() {
     int fd = open("sample.txt", O_CREAT | O_WRONLY, 0644);
     if (fd == -1) {
         perror("Error opening file");
@@ -198,16 +226,18 @@
     }
     printf("File closed successfully.\n");
     return 0;
- }
- 10. getpid()
- #include <stdio.h>
- #include <unistd.h>
- int main() {
+}
+  </code></pre>
+
+  <h2>10. getpid()</h2>
+  <pre><code>#include <stdio.h>
+#include <unistd.h>
+int main() {
     printf("The process ID is: %d\n", getpid());
     printf("The parent process ID is: %d\n", getppid());
     return 0;
-    
- 
- </p>
-  </body>
+}
+  </code></pre>
+
+</body>
 </html>
